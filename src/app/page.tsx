@@ -1,166 +1,173 @@
 "use client";
-
-import Image from "next/image";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function AuthPage() {
   const [authType, setAuthType] = useState<boolean>(false);
 
   return (
-    <>
-      <div className="relative flex justify-center items-center h-screen">
+    <div
+      className={
+        "relative flex flex-col justify-center min-h-[calc(var(--vh,1vh)*100)] bg-gray-50 overflow-hidden"
+      }
+    >
+      <div className="flex justify-center items-center w-full overflow-auto py-8">
+        {/* CARD LOGIN */}
         <div
-          className={`absolute flex h-[60%] bg-white shadow-2xl rounded-2xl transition-all duration-700 ease transform ${
-            authType
-              ? "flex-row opacity-100"
-              : "flex-row-reverse opacity-0 pointer-events-none"
-          }`}
+          className={`flex flex-col-reverse bg-white shadow-2xl rounded-2xl transition-all duration-700 ease-in-out transform 
+                     ${
+                       authType
+                         ? "opacity-100"
+                         : "opacity-0 pointer-events-none"
+                     }
+                     w-[90vw] md:w-[60vw] max-w-[900px]`}
         >
+          {/* Bagian kiri (form login) */}
           <div
-            className={`flex flex-col items-center w-[30vw] ${
+            className={`flex flex-col items-center p-6 md:p-10 w-full md:w-[50%] transition-transform duration-700 ${
               authType ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-            <h3 className="mt-[5vh] text-xl">Masuk</h3>
+            <h3 className="mt-4 text-xl font-semibold">Masuk</h3>
             <form
               action="POST"
-              className="flex flex-col justify-center mb-[3vh] mt-[2vh] mx-[3vw]"
+              className="flex flex-col justify-center mt-4 space-y-4 px-6 md:px-10 overflow-y-auto"
             >
-              <label
-                className="mt-[3vh] mb-[1vh] font-bold text-[14px]"
-                htmlFor="name"
-              >
+              <label className="font-bold text-sm" htmlFor="username">
                 Username
               </label>
               <input
-                placeholder="   masukkan username.."
+                placeholder="Masukkan username..."
                 type="text"
                 name="username"
                 id="username"
-                className="inset-shadow-[3px_3px_50px_rgba(0,0,0,0.10)] rounded-2xl w-[20vw] h-[5vh]"
+                className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
               />
-              <label
-                className="mt-[2vh] font-bold mb-[1vh] text-[14px]"
-                htmlFor="name"
-              >
+
+              <label className="font-bold text-sm" htmlFor="password">
                 Password
               </label>
               <input
-                placeholder="   masukkan password.."
+                placeholder="Masukkan password..."
                 type="password"
                 name="password"
                 id="password"
-                className="inset-shadow-[3px_3px_50px_rgba(0,0,0,0.10)] rounded-2xl w-[20vw] h-[5vh]"
+                className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
               />
+
               <button
-                className="rounded-full bg-red-300 w-auto h-[5vh] mt-[5vh] text-white"
+                className="rounded-full bg-red-400 text-white py-2 mt-4 hover:bg-red-500 transition"
                 type="submit"
               >
                 Masuk
               </button>
             </form>
-            <p className="text-[14px] flex justify-center">
-              Belum punya akun?,
-              <button onClick={() => setAuthType(!authType)}>Daftar</button>
+
+            <p className="text-sm mt-4">
+              Belum punya akun?{" "}
+              <button
+                className="text-red-500 font-semibold"
+                onClick={() => setAuthType(!authType)}
+              >
+                Daftar
+              </button>
             </p>
           </div>
-          <div
-            className={`bg-[#F7A5A5] flex items-center justify-center ${
-              authType ? "translate-x-0" : "translate-x-full"
-            }`}
-          >
-            <div className="flex justify-center items-center my-[2vh] w-[30vw]">
-              <Image
-                alt="logo"
-                src="/images/RentNoteLogoNoBg.png"
-                width={300}
-                height={300}
-              />
-            </div>
+
+          {/* Bagian kanan (gambar/logo) */}
+          <div className="bg-[#F7A5A5] rounded-t-2xl flex items-center justify-center py-4">
+            <Image
+              alt="logo"
+              src="/images/RentNoteLogoNoBg.png"
+              width={100}
+              height={100}
+            />
           </div>
         </div>
 
+        {/* CARD REGISTER */}
         <div
-          className={`absolute flex h-[60%] bg-white shadow-2xl rounded-2xl transition-all duration-700 ease-out transform ${
-            !authType
-              ? "flex-row-reverse opacity-100"
-              : "flex-row opacity-0 pointer-events-none"
-          }`}
+          className={`flex flex-col-reverse bg-white shadow-2xl rounded-2xl transition-all duration-700 ease-in-out transform
+                      ${
+                        !authType
+                          ? "opacity-100"
+                          : "opacity-0 pointer-events-none"
+                      }
+                      w-[90vw] md:w-[60vw] max-w-[900px] absolute`}
         >
           <div
-            className={`flex flex-col items-center w-[30vw] ${
+            className={`flex flex-col items-center transition-transform duration-700 ${
               !authType ? "translate-x-0" : "translate-x-full"
             }`}
           >
-            <h3 className="mt-[5vh] text-xl">Daftar</h3>
+            <h3 className="mt-4 text-xl font-semibold">Daftar</h3>
             <form
               action="POST"
-              className="flex flex-col justify-center mb-[3vh] mt-[2vh] mx-[3vw]"
+              className="flex flex-col justify-center mt-4 space-y-4 px-6 md:px-10 overflow-y-auto"
             >
-              <label className="font-bold mb-[1vh] text-[14px]" htmlFor="name">
+              <label className="font-bold text-sm" htmlFor="name">
                 Nama
               </label>
               <input
-                placeholder="   masukkan nama.."
+                placeholder="Masukkan nama..."
                 type="text"
                 name="name"
                 id="name"
-                className="inset-shadow-[3px_3px_50px_rgba(0,0,0,0.10)] rounded-2xl w-[20vw] h-[5vh]"
+                className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
               />
-              <label
-                className="mt-[2vh] mb-[1vh] font-bold text-[14px]"
-                htmlFor="name"
-              >
+
+              <label className="font-bold text-sm" htmlFor="username">
                 Username
               </label>
               <input
-                placeholder="   masukkan username.."
+                placeholder="Masukkan username..."
                 type="text"
                 name="username"
                 id="username"
-                className="inset-shadow-[3px_3px_50px_rgba(0,0,0,0.10)] rounded-2xl w-[20vw] h-[5vh]"
+                className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
               />
-              <label
-                className="mt-[2vh] font-bold mb-[1vh] text-[14px]"
-                htmlFor="name"
-              >
+
+              <label className="font-bold text-sm" htmlFor="password">
                 Password
               </label>
               <input
-                placeholder="   masukkan password.."
+                placeholder="Masukkan password..."
                 type="password"
                 name="password"
                 id="password"
-                className="inset-shadow-[3px_3px_50px_rgba(0,0,0,0.10)] rounded-2xl w-[20vw] h-[5vh]"
+                className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
               />
+
               <button
-                className="rounded-full bg-red-300 w-auto h-[5vh] mt-[5vh] text-white"
+                className="rounded-full bg-red-400 text-white py-2 mt-4 hover:bg-red-500 transition"
                 type="submit"
               >
                 Daftar
               </button>
             </form>
-            <p className="text-[14px] flex justify-center">
-              Sudah punya akun?,
-              <button onClick={() => setAuthType(!authType)}>Login</button>
+
+            <p className="text-sm my-4">
+              Sudah punya akun?{" "}
+              <button
+                className="text-red-500 font-semibold"
+                onClick={() => setAuthType(!authType)}
+              >
+                Login
+              </button>
             </p>
           </div>
-          <div
-            className={`bg-[#F7A5A5] flex items-center justify-center ${
-              !authType ? "translate-x-0" : "-translate-x-full"
-            }`}
-          >
-            <div className="flex justify-center items-center my-[2vh] w-[30vw]">
-              <Image
-                alt="logo"
-                src="/images/RentNoteLogoNoBg.png"
-                width={300}
-                height={300}
-              />
-            </div>
+
+          {/* Bagian logo bawah */}
+          <div className="bg-[#F7A5A5] rounded-t-2xl flex items-center justify-center py-4">
+            <Image
+              alt="logo"
+              src="/images/RentNoteLogoNoBg.png"
+              width={100}
+              height={100}
+            />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
