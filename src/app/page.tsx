@@ -10,6 +10,7 @@ import {
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios, { isAxiosError } from "axios";
 import { useRouter } from "next/navigation";
+import { verifySession } from "@/lib/session/session";
 
 export default function AuthPage() {
   const [authType, setAuthType] = useState<boolean>(true);
