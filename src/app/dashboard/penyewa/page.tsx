@@ -1,3 +1,3 @@
 export default function PenyewaPage() {
-  return <div>Penywa page</div>;
+  return <div>Penyewa page</div>;
 }
