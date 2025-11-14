@@ -10,7 +10,6 @@ import {
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios, { isAxiosError } from "axios";
 import { useRouter } from "next/navigation";
-import { verifySession } from "@/lib/session/session";
 
 export default function AuthPage() {
   const [authType, setAuthType] = useState<boolean>(true);
@@ -88,6 +87,10 @@ export default function AuthPage() {
     },
     onSuccess: (res) => {
       console.log("✅ Login success:", res.data);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ name: res.data.data.name })
+      );
       router.push("/dashboard");
     },
     onError: (error) => {
@@ -116,7 +119,7 @@ export default function AuthPage() {
     },
     onSuccess: (res) => {
       console.log("✅ Register success:", res.data);
-      window.location.reload();
+      setAuthType(!authType);
     },
     onError: (error) => {
       console.log("❌ Login failed:", error);
@@ -156,7 +159,8 @@ export default function AuthPage() {
           >
             <h3 className="mt-4 text-xl font-semibold">Masuk</h3>
             <form
-              action="POST"
+              action=""
+              method="post"
               className="flex flex-col justify-center mt-4 space-y-4 px-6 md:px-10 overflow-y-auto"
               onSubmit={handleLogin}
             >

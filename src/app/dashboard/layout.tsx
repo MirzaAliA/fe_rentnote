@@ -6,9 +6,9 @@ export default function DashboardLayout({
   content: React.ReactNode;
 }) {
   return (
-    <div>
-      <aside>{sidebar}</aside>
-      <main className="ml-[15vw]">{content}</main>
+    <div className="flex flex-col">
+      <main className="h-full flex-1">{content}</main>
+      <aside className="fixed bottom-0 h-auto w-full">{sidebar}</aside>
     </div>
   );
 }
