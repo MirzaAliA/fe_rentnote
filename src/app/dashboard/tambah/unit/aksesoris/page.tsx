@@ -215,7 +215,7 @@ function AccessoriesData({ errorAddAccessories }: DataKendaraanProps) {
           Nama Aksesoris
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="text"
           name="AccessoriesName"
           id="AccessoriesName"
@@ -228,7 +228,7 @@ function AccessoriesData({ errorAddAccessories }: DataKendaraanProps) {
           Merk Aksesoris
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="text"
           name="AccessoriesBrand"
           id="AccessoriesBrand"
@@ -241,7 +241,7 @@ function AccessoriesData({ errorAddAccessories }: DataKendaraanProps) {
           Jumlah Aksesoris
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="number"
           name="AccessoriesAmount"
           id="AccessoriesAmount"
@@ -254,7 +254,7 @@ function AccessoriesData({ errorAddAccessories }: DataKendaraanProps) {
           Harga Baru Aksesoris
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="number"
           name="AccessoriesPrice"
           id="AccessoriesPrice"
@@ -281,7 +281,7 @@ function AccessoriesPrice({ errorAddAccessories }: DataKendaraanProps) {
           Harga per Jam
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="number"
           name="PriceOneHour"
           id="PriceOneHour"
@@ -291,7 +291,7 @@ function AccessoriesPrice({ errorAddAccessories }: DataKendaraanProps) {
           Harga per Hari
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="number"
           name="PriceOneDay"
           id="PriceOneDay"
@@ -301,7 +301,7 @@ function AccessoriesPrice({ errorAddAccessories }: DataKendaraanProps) {
           Harga per Minggu
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="number"
           name="PriceOneWeek"
           id="PriceOneWeek"
@@ -311,7 +311,7 @@ function AccessoriesPrice({ errorAddAccessories }: DataKendaraanProps) {
           Harga per Bulan
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="number"
           name="PriceOneMonth"
           id="PriceOneMonth"

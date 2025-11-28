@@ -214,7 +214,7 @@ function VehicleData({ errorAddCar }: VehicleDataProps) {
           Nama Kendaraan
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="text"
           name="VehicleName"
           id="VehicleName"
@@ -227,7 +227,7 @@ function VehicleData({ errorAddCar }: VehicleDataProps) {
           Merk Kendaraan
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="text"
           name="VehicleBrand"
           id="VehicleBrand"
@@ -241,21 +241,21 @@ function VehicleData({ errorAddCar }: VehicleDataProps) {
         </label>
         <div className="flex flex-row justify-between">
           <input
-            className="rounded-2xl px-3 py-2 w-[20vw] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+            className="rounded-2xl px-3 py-2 w-[20vw] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
             type="text"
             name="PlateCity"
             id="PlateCity"
             placeholder="H"
           />
           <input
-            className="rounded-2xl px-3 py-2 w-[40vw] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+            className="rounded-2xl px-3 py-2 w-[40vw] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
             type="text"
             name="PlateNumber"
             id="PlateNumber"
             placeholder="1234"
           />
           <input
-            className="rounded-2xl px-3 py-2 w-[20vw] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+            className="rounded-2xl px-3 py-2 w-[20vw] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
             type="text"
             name="PlateArea"
             id="PlateArea"
@@ -269,7 +269,7 @@ function VehicleData({ errorAddCar }: VehicleDataProps) {
           Tahun Kendaraan
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="number"
           name="VehicleYear"
           id="VehicleYear"
@@ -282,7 +282,7 @@ function VehicleData({ errorAddCar }: VehicleDataProps) {
           Status Kendaraan
         </label>
         <select
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           name="VehicleStatus"
           id="VehicleStatus"
         >
@@ -309,7 +309,7 @@ function VehiclePrice({ errorAddCar }: VehicleDataProps) {
           Harga per Jam
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="number"
           name="PriceOneHour"
           id="PriceOneHour"
@@ -319,7 +319,7 @@ function VehiclePrice({ errorAddCar }: VehicleDataProps) {
           Harga per Hari
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="number"
           name="PriceOneDay"
           id="PriceOneDay"
@@ -329,7 +329,7 @@ function VehiclePrice({ errorAddCar }: VehicleDataProps) {
           Harga per Minggu
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="number"
           name="PriceOneWeek"
           id="PriceOneWeek"
@@ -339,7 +339,7 @@ function VehiclePrice({ errorAddCar }: VehicleDataProps) {
           Harga per Bulan
         </label>
         <input
-          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+          className="rounded-2xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4B49AC]"
           type="number"
           name="PriceOneMonth"
           id="PriceOneMonth"
