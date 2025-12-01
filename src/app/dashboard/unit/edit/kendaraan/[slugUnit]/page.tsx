@@ -8,13 +8,14 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
+import { formStepsConfig } from "@/lib/config/config";
 
-export default function EditBikePage() {
+export default function EditVehiclePage() {
   const router = useRouter();
   const params = useParams();
-  const [errorEditBike, setErrorEditBike] = useState<Record<string, string>>(
-    {}
-  );
+  const [errorEditVehicle, setErrorEditVehicle] = useState<
+    Record<string, string>
+  >({});
   const [pageCounter, setPageCounter] = useState<number>(1);
 
   const [form, setForm] = useState<unitVehicleEditType>({
@@ -35,7 +36,7 @@ export default function EditBikePage() {
     vehicleType: "Bike" as "Car" | "Bike",
   });
 
-  const totalPage = 2;
+  const totalPage = formStepsConfig.vehicle.length;
 
   function increasePageCounter() {
     if (pageCounter <= totalPage) {
@@ -52,7 +53,7 @@ export default function EditBikePage() {
     }
   }
 
-  // Get Bike API
+  // Get Vehicle API
   const queryUnitVehicleDataByID = useQuery({
     queryKey: ["unit"],
     queryFn: async () => {
@@ -89,7 +90,7 @@ export default function EditBikePage() {
     });
   }, [queryVehicle]);
 
-  // Add Bike API
+  // Add Vehicle API
   const editVehicleMutation = useMutation({
     mutationFn: async (data: unitVehicleType) => {
       return await axios.put(
@@ -101,7 +102,7 @@ export default function EditBikePage() {
       );
     },
     onSuccess: (res) => {
-      console.log("✅ Edit Bike success:", res.data);
+      console.log("✅ Edit Vehicle success:", res.data);
       if (res.data.data.vehicleType === "Bike") {
         alert("Berhasil mengedit unit Motor");
       } else if (res.data.data.vehicleType === "Car") {
@@ -110,25 +111,25 @@ export default function EditBikePage() {
       router.push("/dashboard/unit");
     },
     onError: (error) => {
-      console.log("❌ Edit Bike Failed:", error);
+      console.log("❌ Edit Vehicle Failed:", error);
       const newError: Record<string, string> = {};
       if (axios.isAxiosError(error)) {
         const field = error.response?.data.errorType as string;
         newError[field] = error.response?.data.message as string;
-        setErrorEditBike(newError);
+        setErrorEditVehicle(newError);
       } else {
         console.log("Error tidak diketahui");
       }
     },
   });
 
-  // Add Bike Form Validation
+  // Add Vehicle Form Validation
   function handleEditVehicle(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const plateNumber =
       form.plateCity + " " + form.plateNumber + " " + form.plateArea;
 
-    const editBikeData = {
+    const editVehicleData = {
       _id: form._id,
       name: form.name,
       brand: form.brand,
@@ -144,7 +145,7 @@ export default function EditBikePage() {
       vehicleType: "Bike",
     };
 
-    const validatedEditVehicleData = unitVehicle.safeParse(editBikeData);
+    const validatedEditVehicleData = unitVehicle.safeParse(editVehicleData);
     if (!validatedEditVehicleData.success) {
       validatedEditVehicleData.error;
 
@@ -155,15 +156,15 @@ export default function EditBikePage() {
         newErrors[field] = issue.message;
       });
 
-      setErrorEditBike(newErrors);
+      setErrorEditVehicle(newErrors);
     } else {
       validatedEditVehicleData.success;
-      setErrorEditBike({});
+      setErrorEditVehicle({});
       editVehicleMutation.mutate(validatedEditVehicleData.data);
     }
   }
 
-  // Delete Bike API
+  // Delete Vehicle API
   const deleteVehicleMutation = useMutation({
     mutationFn: async () => {
       return await axios.delete(
@@ -174,7 +175,7 @@ export default function EditBikePage() {
       );
     },
     onSuccess: (res) => {
-      console.log("✅ Delete Bike success:", res.data);
+      console.log("✅ Delete Vehicle success:", res.data);
       if (res.data.data.vehicleType === "Bike") {
         alert("Berhasil menghapus unit Motor");
       } else if (res.data.data.vehicleType === "Car") {
@@ -183,12 +184,12 @@ export default function EditBikePage() {
       router.push("/dashboard/unit");
     },
     onError: (error) => {
-      console.log("❌ Delete Bike Failed:", error);
+      console.log("❌ Delete Vehicle Failed:", error);
       const newError: Record<string, string> = {};
       if (axios.isAxiosError(error)) {
         const field = error.response?.data.errorType as string;
         newError[field] = error.response?.data.message as string;
-        setErrorEditBike(newError);
+        setErrorEditVehicle(newError);
       } else {
         console.log("Error tidak diketahui");
       }
@@ -251,14 +252,14 @@ export default function EditBikePage() {
           <form action="" method="post" onSubmit={handleEditVehicle}>
             <div className={pageCounter === 1 ? "block" : "hidden"}>
               <VehicleData
-                errorEditBike={errorEditBike}
+                errorEditVehicle={errorEditVehicle}
                 form={form}
                 setForm={setForm}
               />
             </div>
             <div className={pageCounter === 2 ? "block" : "hidden"}>
               <VehiclePrice
-                errorEditBike={errorEditBike}
+                errorEditVehicle={errorEditVehicle}
                 form={form}
                 setForm={setForm}
               />
@@ -353,11 +354,11 @@ export default function EditBikePage() {
 }
 
 function VehicleData({
-  errorEditBike,
+  errorEditVehicle,
   form,
   setForm,
 }: {
-  errorEditBike: Record<string, string>;
+  errorEditVehicle: Record<string, string>;
   form: unitVehicleEditType;
   setForm: React.Dispatch<React.SetStateAction<unitVehicleEditType>>;
 }) {
@@ -380,7 +381,7 @@ function VehicleData({
           onChange={(e) => setForm({ ...form, name: e.target.value })}
         />
         <div className="text-red-500 mt-0 mb-1 text-xs">
-          {errorEditBike.name ?? <p>{errorEditBike.name}</p>}
+          {errorEditVehicle.name ?? <p>{errorEditVehicle.name}</p>}
         </div>
         <label className="mt-2 mb-1" htmlFor="VehicleBrand">
           Merk Kendaraan
@@ -395,7 +396,7 @@ function VehicleData({
           onChange={(e) => setForm({ ...form, brand: e.target.value })}
         />
         <div className="text-red-500 mt-0 mb-1 text-xs">
-          {errorEditBike.brand ?? <p>{errorEditBike.brand}</p>}
+          {errorEditVehicle.brand ?? <p>{errorEditVehicle.brand}</p>}
         </div>
         <label className="mt-2 mb-1" htmlFor="PlateNumber">
           Plat Nomor Kendaraan
@@ -406,8 +407,8 @@ function VehicleData({
             type="text"
             name="PlateCity"
             id="PlateCity"
-            placeholder={form.plateNumber?.split(" ")[0]}
-            value={form.plateNumber?.split(" ")[0]}
+            placeholder={form.plateCity}
+            value={form.plateCity}
             onChange={(e) => setForm({ ...form, plateCity: e.target.value })}
           />
           <input
@@ -415,8 +416,8 @@ function VehicleData({
             type="text"
             name="PlateNumber"
             id="PlateNumber"
-            placeholder={form.plateNumber?.split(" ")[1]}
-            value={form.plateNumber?.split(" ")[1]}
+            placeholder={form.plateNumber}
+            value={form.plateNumber}
             onChange={(e) => setForm({ ...form, plateNumber: e.target.value })}
           />
           <input
@@ -424,13 +425,15 @@ function VehicleData({
             type="text"
             name="PlateArea"
             id="PlateArea"
-            placeholder={form.plateNumber?.split(" ")[2]}
-            value={form.plateNumber?.split(" ")[2]}
+            placeholder={form.plateArea}
+            value={form.plateArea}
             onChange={(e) => setForm({ ...form, plateArea: e.target.value })}
           />
         </div>
         <div className="text-red-500 mt-0 mb-1 text-xs">
-          {errorEditBike.plateNumber ?? <p>{errorEditBike.plateNumber}</p>}
+          {errorEditVehicle.plateNumber ?? (
+            <p>{errorEditVehicle.plateNumber}</p>
+          )}
         </div>
         <label className="mt-2 mb-1" htmlFor="VehicleYear">
           Tahun Kendaraan
@@ -445,7 +448,7 @@ function VehicleData({
           onChange={(e) => setForm({ ...form, year: Number(e.target.value) })}
         />
         <div className="text-red-500 mt-0 mb-1 text-xs">
-          {errorEditBike.year ?? <p>{errorEditBike.year}</p>}
+          {errorEditVehicle.year ?? <p>{errorEditVehicle.year}</p>}
         </div>
         <label className="mt-2 mb-1" htmlFor="VehicleYear">
           Status Kendaraan
@@ -467,7 +470,9 @@ function VehicleData({
           <option value="Rented">Disewa</option>
         </select>
         <div className="text-red-500 mt-0 mb-1 text-xs">
-          {errorEditBike.vehicleStatus ?? <p>{errorEditBike.vehicleStatus}</p>}
+          {errorEditVehicle.vehicleStatus ?? (
+            <p>{errorEditVehicle.vehicleStatus}</p>
+          )}
         </div>
       </div>
     </div>
@@ -475,11 +480,11 @@ function VehicleData({
 }
 
 function VehiclePrice({
-  errorEditBike,
+  errorEditVehicle,
   form,
   setForm,
 }: {
-  errorEditBike: Record<string, string>;
+  errorEditVehicle: Record<string, string>;
   form: unitVehicleEditType;
   setForm: React.Dispatch<React.SetStateAction<unitVehicleEditType>>;
 }) {
@@ -558,7 +563,7 @@ function VehiclePrice({
           }
         />
         <div className="text-red-500 mt-0 mb-1 text-xs">
-          {errorEditBike.price ?? <p>{errorEditBike.price}</p>}
+          {errorEditVehicle.price ?? <p>{errorEditVehicle.price}</p>}
         </div>
       </div>
     </div>

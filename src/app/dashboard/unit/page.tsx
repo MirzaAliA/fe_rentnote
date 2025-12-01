@@ -312,7 +312,7 @@ function ListBikePage({
             <div className="flex flex-row justify-between items-end">
               <h3 className="">{data.plateNumber}</h3>
               <div
-                onClick={() => router.push(`unit/delete/${data._id}`)}
+                onClick={() => router.push(`unit/edit/kendaraan/${data._id}`)}
                 className="flex flex-row"
               >
                 <button className="bi bi-pencil-square flex justify-center items-center text-white bg-[#4B49AC] rounded-full w-8 h-8"></button>
@@ -377,7 +377,7 @@ function ListCarPage({ validCarData }: { validCarData: unitVehicleArrayType }) {
             <div className="flex flex-row justify-between items-end">
               <h3 className="">{data.plateNumber}</h3>
               <div
-                onClick={() => router.push(`unit/delete/${data._id}`)}
+                onClick={() => router.push(`unit/edit/kendaraan/${data._id}`)}
                 className="flex flex-row"
               >
                 <button className="bi bi-pencil-square flex justify-center items-center text-white bg-[#4B49AC] rounded-full w-8 h-8"></button>
@@ -406,6 +406,7 @@ function ListAccessoriesPage({
 }: {
   validAccessoriesData: unitAccessoriesArrayType;
 }) {
+  const router = useRouter();
   return (
     <section className="my-6">
       <ul className="flex flex-col gap-4">
@@ -422,7 +423,16 @@ function ListAccessoriesPage({
               </div>
             </div>
             <h3 className="text-[#4B49AC]">{data.name}</h3>
-            <h3 className="">Jumlah: {data.amount}</h3>
+            <div className="flex flex-row justify-between items-center">
+              <h3 className="">Jumlah: {data.amount}</h3>
+              <div
+                onClick={() => router.push(`unit/edit/aksesoris/${data._id}`)}
+                className="flex flex-row"
+              >
+                <button className="bi bi-pencil-square flex justify-center items-center text-white bg-[#4B49AC] rounded-full w-8 h-8"></button>
+              </div>
+            </div>
+            <h3 className="mt-4">Harga Sewa:</h3>
             <div className="flex flex-row justify-between flex-wrap">
               <div>
                 <p>1 Jam Rp.{data.price.perHour / 1000}k</p>
