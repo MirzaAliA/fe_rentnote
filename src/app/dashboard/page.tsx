@@ -55,7 +55,7 @@ export default function HomePage() {
           <div className="flex flex-row mb-4 mx-4 gap-6">
             <Link
               className="flex flex-col gap-2 justify-center items-center"
-              href={""}
+              href={"dashboard/tambah/penyewa/motor"}
             >
               <div className="py-4 px-4 rounded-lg shadow-[0px_8px_16px_-8px_rgba(0,0,0,0.30)]">
                 <i className="bi bi-bicycle text-2xl "></i>
@@ -64,7 +64,7 @@ export default function HomePage() {
             </Link>
             <Link
               className="flex flex-col gap-2 justify-center items-center"
-              href={""}
+              href={"dashboard/tambah/penyewa/mobil"}
             >
               <div className="py-4 px-4 rounded-lg shadow-[0px_8px_16px_-8px_rgba(0,0,0,0.30)]">
                 <i className="bi bi-car-front-fill text-2xl"></i>
@@ -73,7 +73,7 @@ export default function HomePage() {
             </Link>
             <Link
               className="flex flex-col gap-2 justify-center items-center"
-              href={""}
+              href={"dashboard/tambah/penyewa/aksesoris"}
             >
               <div className="py-4 px-4 rounded-lg shadow-[0px_8px_16px_-8px_rgba(0,0,0,0.30)]">
                 <i className="bi bi-backpack text-2xl"></i>
